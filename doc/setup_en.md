@@ -33,7 +33,7 @@ A step-by-step guide to set up InternHumanoid for simulation and reinforcement l
 Clone this repository from Github before installation:
 
 ```bash
-git clone https://github.com/Wongziseoi/InternHumanoid.git
+git clone git@github.com:InternRobotics/InternHumanoid.git
 ```
 
 ---
