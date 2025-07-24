@@ -1,0 +1,11 @@
+__pycache__
+wandb/
+logs/
+*.pyc
+*.zip
+*.npz
+*.txt
+*_data*
+*DS_Store*
+*.pt*
+*.sh*

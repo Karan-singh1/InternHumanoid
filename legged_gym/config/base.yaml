@@ -1,0 +1,28 @@
+defaults:
+  - _self_
+  - base/base.yaml
+
+
+args:
+  resume: False
+  experiment_name: 
+  run_name: 
+  load_run: 
+  checkpoint: 
+
+  headless: True
+  horovod: False
+  rl_device: "cuda:0"
+  sim_device: "cuda:0"
+  pipeline: "gpu"
+  flex: False
+  physx: True
+  num_threads: 0
+  subscenes: 0
+  slices: 0
+  num_envs: 4096
+  seed: 
+  max_iterations: 
+
+
+

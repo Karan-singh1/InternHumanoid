@@ -1,0 +1,61 @@
+# @package _global_
+algo:
+    seed: 1
+    runner_class_name: "OnPolicyRunner"
+    policy:
+        actor_hidden_dims: [1024, 512, 256, 256]
+        critic_hidden_dims: [512, 512, 256, 256]
+
+        rnn_type: "lstm"
+        rnn_hidden_dim: 256
+          
+        init_std: 1.0
+        const_noise: False
+    algorithm:
+      # training params
+      value_loss_coef: 5.0
+      clip_param: 0.2
+      value_clip_param: 0.5
+      use_clipped_value_loss: True
+      entropy_coef: 0.01
+      num_learning_epochs: 5
+      # mini batch size: num_envs*nsteps / nminibatches
+      num_mini_batches: 5
+      learning_rate: 1e-4
+      learning_rate_limit: [1e-5, 1e-4]
+      schedule: "adaptive" # could be adaptive, fixed
+      gamma: 0.99
+      lam: 0.95
+      desired_kl: 0.01
+      max_grad_norm: 1.0
+
+      disc_num_batch_size: 512
+      disc_learning_rate: 5e-4
+      disc_momentum: 0.9
+      disc_weight_decay: 1e-3
+      disc_gradient_penalty_coef: 5.0
+      
+      # L2C2
+      smoothness_coef: 0.01
+    
+    runner:
+      policy_class_name: "ActorCritic"
+      algorithm_class_name: "PPO"
+      num_warmup_steps: 500
+      num_steps_per_env: 55 # per iteration
+      max_iterations: 100000 # number of policy updates
+      
+      # logging
+      log_interval: 50
+      save_interval: 500 # check for potential saves every this many iterations
+      experiment_name: "g1_29dof_tracking"
+      run_name: "g1_29dof_im"
+      logger: "tensorboard"
+      wandb_project: "Humanoid Imitation"
+      wandb_group: "g1_29dof_im"
+      
+      # load and resume
+      resume: False
+      load_run: -1 # -1: last run
+      checkpoint: -1 # -1: last saved model
+      resume_path:  # updated from load_run and chkpt
